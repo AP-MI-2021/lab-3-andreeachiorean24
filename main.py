@@ -96,19 +96,47 @@ def get_longest_average_below(list, average):
                 subsecventaMax = list[i:j + 1]
     return subsecventaMax
 
-def test_get_longest_average_below():
+def testgetlongestaveragebelow():
     assert get_longest_average_below([2, 4, 3, 55, 23], 5) == [2, 4, 3]
     assert get_longest_average_below([1, 2, 6, 12], 5) == [1, 2, 6]
     assert get_longest_average_below([5, 3, 22, 23], 10) == [5,3]
 
+def ToateElementeleSuntPare(list):
+    """
+    Determina daca o lista are toate elementele nr. pare
+    :param list: lista de nr. intregi
+    :return: True, daca toate elementele din lista sunt nr. pare sau False, in caz contrar
+    """
+    for i in list:
+        if i%2!=0:
+            return False
+    return True
+
+def testToateElementeleSuntPare():
+    assert ToateElementeleSuntPare([1, 5, 5]) == False
+    assert ToateElementeleSuntPare([2, 4, 9]) == False
+    assert ToateElementeleSuntPare([2, 12, 6]) == True
+
+def get_longest_all_even(list):
+    """
+    Determina cea mai lunga subsecventa de elemente pare
+    :param list: Lista de numere intregi
+    :return: Cea mai lunga subsecventa de elemnte pare
+    """
+    subsecventaMax = []
+    for i in range(len(list)):
+        for j in range(i, len(list)):
+            if ToateElementeleSuntPare(list[i:j+1]) and len(subsecventaMax) < len(list[i:j+1]):
+                subsecventaMax = list[i:j+1]
+    return subsecventaMax
+
+def test_get_longest_all_even():
+    assert get_longest_all_even([]) == []
+    assert get_longest_all_even([1, 3, 15, 21]) == []
+    assert get_longest_all_even([1, 2, 4, 3,5 ,8]) == [2,4]
+
 
 def main():
-
-    testPrimeFunction()
-    testNonePrimesFunction()
-    testLongestNotPrimesFunction()
-    test_get_longest_average_below()
-
 
     list = []
 
@@ -116,7 +144,8 @@ def main():
         print("1. Citire date")
         print("2. Determinati cea mai lunga subsecventa de numere neprime dintr-o lista")
         print("3. Determinare cea mai lungă subsecvență in care media numerelor nu depășește o valoare citită")
-        print("4. Iesire")
+        print("4. Determinare cea mai lungă subsecvență in care toate numerele sunt pare")
+        print("5. Iesire")
 
         optiune = input("Selectati optiune: ")
 
@@ -128,10 +157,17 @@ def main():
             average = int(input("Dati valoarea cu care sa se compare media:"))
             print(get_longest_average_below(list, average))
         elif optiune == "4":
+            print(get_longest_all_even(list))
+        elif optiune == "5":
             break
         else:
             print("Optiune gresita! Selectati alta optiune.")
 
 
 if __name__ == '__main__':
+    testPrimeFunction()
+    testNonePrimesFunction()
+    testLongestNotPrimesFunction()
+    testgetlongestaveragebelow()
+    test_get_longest_all_even()
     main()
