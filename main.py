@@ -9,7 +9,7 @@ def citireLista():
 def isPrime(nr):
     """
   Determina daca un numar este prim.
-  :param x: nr intreg
+  :param nr: nr intreg
   :return: True daca numarul este prim sau False in caz contrar.
   """
     if nr < 2:
@@ -30,7 +30,7 @@ def testPrimeFunction():
 def noneArePrimes(list):
     """
   Determina daca toate numerele dintr-o lista sunt prime
-  :param l: O lista de numere intregi
+  :param list: O lista de numere intregi
   :return: True daca toate numerele dintr-o lista sunt prime sau False, in caz contar.
   """
     for i in list:
