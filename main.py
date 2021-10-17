@@ -4,7 +4,6 @@ def citireLista():
     for i in range(n):
         list.append(int(input("list[" + str(i) + "]= ")))
     return list
-am mod
  
 
 def isPrime(nr):
